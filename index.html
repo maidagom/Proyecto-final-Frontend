@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script type="module" src="./js/script.js"></script>
+</head>
+<body class="bg-fuchsia-900 text-fuchsia-100">
+    <nav class="bg-white/85 text-fuchsia-900 backdrop:blur-sm p-2 flex gap-8 justify-center fixed top-0 right-0 w-full">
+        <a href="/" class="cursor-pointer">Inicio</a>
+        <a href="#nosotros" class="cursor-pointer">Nosotros</a>
+        <a href="#api-producto" class="cursor-pointer">Producto-API</a>
+        <a href="#contacto" class="cursor-pointer">Contacto</a>
+    </nav>
+    <header class="max-h-[600px] h-screen mt-12">
+        <div>
+            <span>Más que productos, momentos para ti</span>
+        </div>
+    </header>
+    <main class="container mx-auto my-6">
+        <section id="nosotros">
+            <header class="p-4 text-center">
+                <h1 class="text-6xl leading-normal">La tienda que siempre te acompaña</h1>
+            </header>
+            <article class="bg-fuchsia-500/50 p-4">
+                <h2 class="text-3xl text-center my-4">En Fake Store queremos que cada compra se sienta fácil y divertida. Somos tu tienda online de confianza, con productos pensados para acompañarte en tu día a día. Aquí no solo encuentras artículos, encuentras experiencias que hacen tu vida más cómoda y especial.</h2>
+            </article>
+        </section>
+        <section id="api-producto">
+            <header class="relative my-6">
+                <h3 class="text-center text-4xl p-6 animate-pulse pointer-events-none">Encuentra tu producto perfecto con un click!</h3>
+                <form action="https://fakestoreapi.com/products" method="get" class="flex">
+                    <input type="text" name="products" class="w-full p-2 text-black" placeholder="Ingresa un número del 1 al 20">
+                    <button class="bg-pink-800 text-white p-2 rounded-r">Buscar</button>
+                </form>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 bg-fuchsia-500/50 p-4 gap-6" id="articulo">
+                <article class="border border-fuchsia-200 rounded-xl flex flex-col">
+                    <h1 class="px-4 p-4 text-center text-lg"><strong class="text-balance">ID-7:</strong> Ring White Gold Plated Princess</h1>
+                    <figure class="px-4"><img class="p-2 hover:scale-125 w-60 h-60" src="https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png" alt="ring"></figure>
+                    <div class="bg-white text-fuchsia-900 p-2 w-full h-full rounded-b-xl text-center" id="centro">
+                        <div><strong>Description:</strong> <span class="text-sm">Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day..</span></div>
+                        <div><strong>Category:</strong> <span class="text-base">Jewelery</span></div>
+                        <div><strong>Price:</strong> <span class="text-2xl">9.99</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer id="contacto" class="py-16 text-center bg-fuchsia-950"><p>&copy; 2026 Fake Store. Todos los derechos reservados.</p></footer>
+</body>
+</html>
