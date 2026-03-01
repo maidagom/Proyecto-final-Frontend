@@ -10,16 +10,18 @@ formulario.addEventListener("submit", async function (evento) {
 
     const numero = Number(products);
     if (isNaN(numero) || numero < 1 || numero > 20) {
-        alert("ERROR; ingresa un número entre 1 y 20.");
-        return;
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, ingresa un número válido entre 1 y 20.",
+});
     }
 
     const peticion = await fetch(`${formulario.action}/${products}`);
+    const resultado = await peticion.json();
+
     
 
-
-    const resultado = await peticion.json();
-   
     const productos = `<article class="border border-fuchsia-200 rounded-xl flex flex-col">
                     <h1 class="px-4 p-4 text-center text-lg"><strong class="text-balance">ID-${resultado.id}:</strong> ${resultado.title}</h1>
                     <figure class="px-4"><img class="p-2 hover:scale-125 w-60 h-60" src='${resultado.image}' alt="${resultado.title}"></figure>
@@ -27,14 +29,14 @@ formulario.addEventListener("submit", async function (evento) {
                         <div><strong>Description:</strong> <span class="text-sm">${resultado.description}</span></div>
                         <div><strong>Category:</strong> <span class="text-base">${resultado.category}</span></div>
                         <div><strong>Price:</strong> <span class="text-2xl">${resultado.price}</span></div>
+                        <button class="add-to-cart bg-fuchsia-600 text-white px-4 py-2 mt-2 rounded">Añadir</button>
                     </div>
                 </article>`
 
-
-        articulo.insertAdjacentHTML("beforeend", productos)
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-       });
+    articulo.insertAdjacentHTML("beforeend", productos)
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+   });
 });

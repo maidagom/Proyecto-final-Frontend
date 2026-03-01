@@ -2,43 +2,47 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Proyecto Final</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script defer src="./js/SweetAlert2.js"></script>
     <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/carrito.js"></script>
 </head>
-<body class="bg-fuchsia-900 text-fuchsia-100">
-    <nav class="bg-white/85 text-fuchsia-900 backdrop:blur-sm p-2 flex gap-8 justify-center fixed top-0 right-0 w-full">
+<body class="bg-fuchsia-900 text-fuchsia-100 min-h-screen w-full">
+    <nav class="bg-white/85 text-fuchsia-900 backdrop:blur-sm p-3 flex flex-wrap gap-4 md:gap-8 justify-center fixed top-0 right-0 w-full">
         <a href="#inicio" class="cursor-pointer">Inicio</a>
         <a href="#nosotros" class="cursor-pointer">Nosotros</a>
         <a href="#api-producto" class="cursor-pointer">Producto-API</a>
         <a href="#contacto" class="cursor-pointer">Contacto</a>
+        <button id="cart-icon" class="bg-fuchsia-700 text-white px-4 py-2 rounded sticky">🛒 (0)</button>
     </nav>
-    <header class="max-h-[600px] h-screen mt-12">
-        <div id="inicio">
-            <span>Más que productos, momentos para ti</span>
+    <header id="inicio" class="max-h-[600px] h-screen mt-28 flex flex-col justify-center items-center w-full">
+        <div class="text-center w-full">
+            <span class="text-6xl font-extrabold w-full break-words">Más que productos, momentos para ti</span>
+            <img class="mx-auto flex justify-center w-5/6 px-2 py-4 md:px-8 md:py-8 hover:scale-75 transition-transform duration-300" src="./Banner/Banner_Fakestore.jpg" alt="#">
         </div>
     </header>
-    <main class="container mx-auto my-6">
+    <main class="container mx-auto px-2 md:px-0">
         <section id="nosotros">
             <header class="p-4 text-center">
-                <h1 class="text-6xl leading-normal">La tienda que siempre te acompaña</h1>
+                <h1 class="text-6xl leading-normal break-words">La tienda que siempre te acompaña</h1>
             </header>
             <article class="bg-fuchsia-500/50 p-4">
-                <h2 class="text-3xl text-center my-4">En Fake Store queremos que cada compra se sienta fácil y divertida. Somos tu tienda online de confianza, con productos pensados para acompañarte en tu día a día. Aquí no solo encuentras artículos, encuentras experiencias que hacen tu vida más cómoda y especial.</h2>
+                <h2 class="text-3xl text-center my-4 break-words">En Fake Store queremos que cada compra se sienta fácil y divertida. Somos tu tienda online de confianza, con productos pensados para acompañarte en tu día a día. Aquí no solo encuentras artículos, encuentras experiencias que hacen tu vida más cómoda y especial.</h2>
             </article>
         </section>
         <section id="api-producto">
             <header class="relative my-6">
-                <h3 class="text-center text-4xl p-6 animate-pulse pointer-events-none">Encuentra tu producto perfecto con un click!</h3>
-                <form action="https://fakestoreapi.com/products" method="get" class="flex">
-                    <input type="text" name="products" class="w-full p-2 text-black" placeholder="Ingresa un número del 1 al 20">
-                    <button class="bg-pink-800 text-white p-2 rounded-r">Buscar</button>
+                <h3 class="text-center text-4xl p-6 animate-pulse pointer-events-none break-words">Encuentra tu producto perfecto con un click!</h3>
+                <form action="https://fakestoreapi.com/products" method="get" class="flex flex-col sm:flex-row w-full gap-2">
+                    <input type="text" name="products" class="w-full p-2 text-black rounded sm:rounded-none sm:rounded-l" placeholder="Ingresa un número del 1 al 20">
+                    <button class="bg-pink-800 text-white p-2 rounded sm:rounded-none sm:rounded-r">Buscar</button>
                 </form>
             </header>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 bg-fuchsia-500/50 p-4 gap-6" id="articulo">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-fuchsia-500/50 p-4 gap-6" id="articulo">
                 <article class="border border-fuchsia-200 rounded-xl flex flex-col">
                     <h1 class="px-4 p-4 text-center text-lg"><strong class="text-balance">ID-7:</strong> Ring White Gold Plated Princess</h1>
                     <figure class="px-4"><img class="p-2 hover:scale-125 w-60 h-60" src="https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png" alt="ring"></figure>
@@ -46,11 +50,17 @@
                         <div><strong>Description:</strong> <span class="text-sm">Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day..</span></div>
                         <div><strong>Category:</strong> <span class="text-base">Jewelery</span></div>
                         <div><strong>Price:</strong> <span class="text-2xl">9.99</span></div>
+                        <button class="add-to-cart bg-fuchsia-600 text-white px-4 py-2 mt-2 rounded">Añadir</button>
                     </div>
                 </article>
             </div>
         </section>
     </main>
-    <footer id="contacto" class="py-16 text-center bg-fuchsia-950"><p>&copy; 2026 Fake Store. Todos los derechos reservados.</p></footer>
+    <aside class="p-4 bg-white shadow m-2 md:m-10 rounded-lg max-w-full overflow-x-auto">
+    <h2 class="text-fuchsia-900 text-xl font-bold">Carrito</h2>
+    <ul id="cart-list"></ul>
+    <p class="text-fuchsia-950 text-2xl">Total: $<span id="cart-total" class="text-fuchsia-900 text-3xl">0</span></p>
+    </aside>
+    <footer id="contacto" class="py-16 text-center bg-fuchsia-950 w-full"><p>&copy; 2026 Fake Store. Todos los derechos reservados.</p></footer>
 </body>
 </html>
